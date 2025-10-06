@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaming With Mena 🎮</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* -------------------- BASE -------------------- */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at top left, #0a0a0a, #000000);
+  color: #fff;
+  overflow-x: hidden;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  animation: bgColorShift 60s infinite linear;
+}
+a {text-decoration:none;}
+
+/* -------------------- HEADER -------------------- */
+header {
+  background: linear-gradient(90deg, #00ccff, #0077ff, #00ffee, #00ff88);
+  padding: 50px;
+  text-shadow: 0 0 25px #00ccff, 0 0 50px #0077ff, 0 0 80px #00ffee;
+  box-shadow: 0 0 60px #00ccff, 0 0 100px #0077ff;
+  border-bottom: 3px solid #00ccff;
+  border-radius: 0 0 25px 25px;
+  animation: headerGlow 5s ease-in-out infinite alternate;
+}
+header h1 {
+  font-size: 4em;
+  animation: glowHeader 2s ease-in-out infinite alternate, bounceHeader 4s ease-in-out infinite;
+}
+@keyframes glowHeader {
+  0% {text-shadow: 0 0 20px #00ccff, 0 0 40px #0077ff;}
+  50% {text-shadow: 0 0 60px #00ccff, 0 0 120px #0077ff, 0 0 150px #00ffee;}
+  100% {text-shadow: 0 0 80px #00ccff, 0 0 150px #0077ff, 0 0 200px #00ffee;}
+}
+@keyframes bounceHeader {
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-20px);}
+}
+@keyframes headerGlow {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* -------------------- SECTIONS -------------------- */
+section {
+  margin: 50px auto;
+  max-width: 950px;
+  font-size: 1.3em;
+  line-height: 2em;
+  text-shadow: 0 0 20px #00ccff;
+  animation: fadeIn 3s ease forwards, pulseSection 4s infinite alternate;
+  padding: 30px;
+  background: rgba(0,0,0,0.55);
+  border-radius: 25px;
+  box-shadow: 0 0 60px #00ccff, 0 0 100px #0077ff;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+section:hover {transform: scale(1.05); box-shadow:0 0 100px #00ccff,0 0 150px #00ffee;}
+h2 {margin-bottom: 20px;}
+.glow {
+  color: #00ccff;
+  text-shadow: 0 0 25px #00ccff, 0 0 60px #0077ff, 0 0 90px #00ffee;
+  animation: pulseGlow 2s infinite alternate;
+}
+@keyframes pulseGlow {
+  0% {text-shadow: 0 0 20px #00ccff, 0 0 50px #0077ff;}
+  50% {text-shadow: 0 0 40px #00ccff, 0 0 90px #0077ff, 0 0 120px #00ffee;}
+  100% {text-shadow: 0 0 60px #00ccff, 0 0 120px #0077ff, 0 0 160px #00ffee;}
+}
+@keyframes fadeIn {from {opacity:0; transform: translateY(30px);} to {opacity:1; transform: translateY(0);}}
+@keyframes pulseSection {0%{box-shadow:0 0 60px #00ccff;}50%{box-shadow:0 0 120px #00ffee;}100%{box-shadow:0 0 60px #00ccff;}}
+
+/* -------------------- STATS -------------------- */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin: 40px 0;
+}
+.stat {
+  background: rgba(0,0,0,0.6);
+  padding: 20px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #00ccff, 0 0 50px #0077ff;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.stat:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 60px #00ffea, 0 0 90px #0077ff, 0 0 120px #00ffee;
+}
+.stat h3 {
+  font-size: 1.5em;
+  color: #00ffea;
+  margin-bottom: 10px;
+}
+.stat p {
+  font-size: 1.3em;
+  color: #fff;
+}
+
+/* -------------------- BUTTONS -------------------- */
+.buttons {margin-top:40px;}
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 20px 40px;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: 3px solid #00ccff;
+  border-radius: 20px;
+  color: #00ccff;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 35px #00ccff, 0 0 60px #0077ff;
+}
+.btn:hover {
+  color: #000;
+  background: linear-gradient(45deg, #00ffea, #0077ff, #00ccff, #00ffee);
+  box-shadow:0 0 80px #00ffea,0 0 120px #0077ff,0 0 150px #00ffee;
+  transform: scale(1.2) rotate(-3deg);
+}
+.btn::before {
+  content:'';
+  position: absolute;
+  top:0; left:-80%;
+  width:60%; height:100%;
+  background: rgba(255,255,255,0.2);
+  transform: skewX(-30deg);
+  transition: all 0.5s ease;
+}
+.btn:hover::before {left:130%;}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+  margin-top:50px;
+  padding:30px;
+  border-top: 3px solid #0077ff;
+  font-size:1em;
+  color: #aaa;
+  text-shadow:0 0 20px #0077ff;
+}
+
+/* -------------------- PARTICLES -------------------- */
+.particle {
+  position: absolute;
+  border-radius: 100%;
+  background: rgba(0, 204, 255, 0.8);
+  pointer-events: none;
+  animation: float 25s linear infinite;
+  mix-blend-mode: screen;
+}
+@keyframes float {
+  0%{transform:translateY(0) translateX(0) scale(1);opacity:1;}
+  100%{transform:translateY(-1600px) translateX(400px) scale(0.2);opacity:0;}
+}
+
+/* -------------------- NEON LINES -------------------- */
+.neon-line {
+  position: absolute;
+  width: 3px;
+  height:200%;
+  background:linear-gradient(#00ccff,#0077ff,#00ffee,#00ff88);
+  opacity:0.2;
+  animation: lineMove 6s linear infinite;
+}
+@keyframes lineMove{0%{top:-50%;}100%{top:100%;}}
+
+/* -------------------- BACKGROUND ANIMATION -------------------- */
+@keyframes bgColorShift {
+  10%{background:radial-gradient(circle at top left,#0a0a0a,#000000);}
+  25%{background:radial-gradient(circle at top right,#0a0a0a,#001111);}
+  50%{background:radial-gradient(circle at bottom left,#0a0a0a,#000011);}
+  75%{background:radial-gradient(circle at bottom right,#0a0a0a,#001100);}
+  100%{background:radial-gradient(circle at top left,#0a0a0a,#000000);}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎮 GAMING WITH MENA 🎮 2025!</h1>
+</header>
+
+<!-- -------------------- ABOUT ME -------------------- -->
+<section>
+  <h2 class="btn">ABOUT ME! 😎</h2>
+  <p>
+    YO! I’M <strong>MENADITH</strong> — 9-YEAR-OLD GAMER, TECH WIZARD, KARATE KID, ANIME FAN, AND FUTURE CONTENT CREATOR! I LIVE FOR GAMING, TECH, AND EPIC ADVENTURES!
+  </p>
+</section>
+
+<!-- -------------------- FAVORITE GAMES -------------------- -->
+<section>
+  <h2 class="btn">FAVORITE GAMES 🎮</h2>
+  <ul>
+    <li>Roblox</li>
+    <li>Delta Force 2025</li>
+    <li>Asphalt Legends Unite</li>
+    <li>Natural Disaster Survival</li>
+    <li>Summoners Greed Mods</li>
+  </ul>
+</section>
+
+<!-- -------------------- FAVORITE ANIME -------------------- -->
+<section>
+  <h2 class="btn">FAVORITE ANIME ✨</h2>
+  <ul>
+    <li>Jujutsu Kaisen</li>
+    <li>Naruto</li>
+    <li>Demon Slayer</li>
+    <li>Attack on Titan</li>
+    <li>My Hero Academia</li>
+  </ul>
+</section>
+
+<!-- -------------------- FAVORITE MOMENTS -------------------- -->
+<section>
+  <h2 class="btn">FAVORITE MOMENTS 🌟</h2>
+  <ul>
+    <li>MVP in Delta Force 2025 with 42,377 points</li>
+    <li>First overclocking success on RTX 2050 GPU</li>
+    <li>Completed hardest Roblox NDS level</li>
+    <li>Winning streak in Asphalt Legends drift challenge</li>
+  </ul>
+</section>
+
+<!-- -------------------- FUNNY FAILS -------------------- -->
+<section>
+  <h2 class="btn">FUNNY FAILS 😂</h2>
+  <ul>
+    <li>Fell off map in Roblox NDS</li>
+    <li>Blew myself up in Delta Force</li>
+    <li>Epic fail on Asphalt Legends drift</li>
+  </ul>
+</section>
+
+<!-- -------------------- ACHIEVEMENTS / TROPHIES -------------------- -->
+<section>
+  <h2 class="btn">ACHIEVEMENTS 🏆</h2>
+  <ul>
+    <li>Delta Force MVP trophy 🏅</li>
+    <li>Top 100 leaderboard finish in Roblox</li>
+    <li>Unlocked secret mod in Summoners Greed</li>
+    <li>Overclocked GPU milestone 💻</li>
+    <li>5 Medals In Shotokan Karate</li>
+  </ul>
+</section>
+
+<!-- -------------------- GEAR & SETUP -------------------- -->
+<section>
+  <h2 class="glow">GEAR & SETUP 💻🎧</h2>
+  <ul>
+    <li>Laptop: AMD Ryzen 5 7535HS, RTX 2050, 165Hz Monitor</li>
+    <li>Mouse: ASUS TUF GAMING M3 GEN2</li>
+    <li>Keyboard: Mechanical RGB</li>
+    <li>Headphones: Lenovo Legion START Y60</li>
+    <li>Fan Speed: 5800 RPM Max</li>
+  </ul>
+</section>
+
+<!-- -------------------- MODS & HACKS -------------------- -->
+<section>
+  <h2 class="glow">MODS & HACKS 🔧</h2>
+  <ul>
+    <li>Custom PTC mods in Battle Cats</li>
+    <li>Summoners Greed Mod Adventures</li>
+    <li>Delta Force secret loadouts</li>
+    <li>Roblox Natural Disaster Survival custom maps</li>
+  </ul>
+</section>
+
+<!-- -------------------- STREAMS / VIDEOS -------------------- -->
+<section>
+  <h2 class="btn">STREAMS / VIDEOS 🎥</h2>
+  <div class="video">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/zcxu_agMj30" title="Epic Anime edit 1"></iframe>
+  </div>
+  <div class="video">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/PGHpitOIFsc" title="Epic Anime edit"></iframe>
+  </div>
+  <div class="video">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/6klPQE2tbcI" title="Epic Anime edit"></iframe>
+  </div>
+</section>
+
+<!-- -------------------- UPCOMING GOALS / CHALLENGES -------------------- -->
+<section>
+  <h2 class="glow">UPCOMING GOALS 🎯</h2>
+  <ul>
+    <li>Master Delta Force sniper leaderboard</li>
+    <li>Get 100% completion in Roblox NDS</li>
+    <li>Overclock RTX 2050 and compare performance</li>
+    <li>Create my first content video series</li>
+  </ul>
+</section>
+
+<footer>
+  <p>© 2025 Gaming With Mena | Powered by Menadith 💻</p>
+</footer>
+
+<script>
+// ---------- PARTICLES ----------
+const numParticles=175;
+const layers=['rgba(0,255,255,0.6)','rgba(0,200,255,0.5)','rgba(0,150,255,0.4)'];
+for(let i=0;i<numParticles;i++){
+  const p=document.createElement('div');
+  p.classList.add('particle');
+  const size=Math.random()*15+3;
+  p.style.width=p.style.height=size+'px';
+  p.style.left=Math.random()*window.innerWidth+'px';
+  p.style.top=Math.random()*window.innerHeight+'px';
+  p.style.background=layers[Math.floor(Math.random()*layers.length)];
+  p.style.animationDuration=(Math.random()*20+15)+'s';
+  p.style.opacity=Math.random();
+  document.body.appendChild(p);
+}
+
+// ---------- NEON LINES ----------
+for(let i=0;i<5;i++){
+  const line=document.createElement('div');
+  line.classList.add('neon-line');
+  line.style.left=Math.random()*window.innerWidth+'px';
+  line.style.height=(Math.random()*200+100)+'%';
+  line.style.animationDuration=(Math.random()*12+6)+'s';
+  document.body.appendChild(line);
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
